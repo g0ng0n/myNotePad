@@ -41,12 +41,23 @@ class App extends Component {
     });
   }
 
+  handleSubmit(event){
+   alert(`Your note ${this.state.currentTitle} has been added`);
+   event.preventDefault();
+  }
+
  render() {
     return (
       <div className="App">   
         <Header name={this.state.name}/>
+        <Form 
+          currentTitle={this.state.currentTitle}
+          currentDetails={this.state.currentDetails} 
+          handleChange={this.state.handleChange}
+          handleSubmit={this.state.handleSubmit}
+        />
         <Grid notes={this.state.notes}/>
-        <Form />
+
       </div>
     );
   }

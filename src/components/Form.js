@@ -1,5 +1,4 @@
 import React from 'react';
-import Single from './Single';
 
 class Form extends React.Component {
 
@@ -13,7 +12,7 @@ class Form extends React.Component {
 
 	render() {
 		return (
-			<Form onSubmit={this.props.handleSubmit}>
+			<form onSubmit={this.props.handleSubmit}>
 				<label>Title:</label>
 				<input 
 					name="currentTitle"
@@ -27,7 +26,7 @@ class Form extends React.Component {
 				<div>
 					<input type="submit" value="Add Note"/>
 				</div>	
-			</Form>
+			</form>
 		);
 	}
 
