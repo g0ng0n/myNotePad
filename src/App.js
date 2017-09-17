@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import './App.css';
-import Grid from './components/Grid'
+import Grid from './components/Grid';
+import Form from './components/Form';
 
 class App extends Component {
 
@@ -26,7 +27,18 @@ class App extends Component {
         },
       ],
       name: 'Gonzo',
+      currentTitle: '',
+      currentDetails: '',
     } 
+  }
+
+  handleChange(event){
+    const name = event.target.name;
+    const value = event.target.value;
+
+    this.setState({
+      [name] : value
+    });
   }
 
  render() {
@@ -34,7 +46,7 @@ class App extends Component {
       <div className="App">   
         <Header name={this.state.name}/>
         <Grid notes={this.state.notes}/>
-      }
+        <Form />
       </div>
     );
   }
