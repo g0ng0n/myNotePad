@@ -25,7 +25,6 @@ class Form extends React.Component {
 							type="text"
 							ref="title"
 							className="validate"/>
-							<label htmlFor="title">Title </label>
 					</div>
 					<div className="input-field col s7">
 						<input 
@@ -33,7 +32,6 @@ class Form extends React.Component {
 							name="currentDetails"
 							type="text"
 							ref="details"/>
-							<label htmlFor="tiitle">Details </label>
 					</div>
 					<div className="input-field col s2">
 						<button className="btn-large wave-effect waves-light"
