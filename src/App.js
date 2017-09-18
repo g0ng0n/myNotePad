@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Header from './components/Header';
 import Grid from './components/Grid';
 import Form from './components/Form';
-import firebase from 'firebase';
-import _ from 'lodash';
+import { getInitialNotes, addNewNote, removeNote } from './store/actions';
 
   
 // styles in-component - pay attention to the syntax
@@ -16,26 +16,44 @@ const styles = {
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      notes: [],
-      name: 'Gonzo',
-      currentTitle: '',
-      currentDetails: '',
-    } 
-  }
+
 
  render() {
     return (
       <div style={styles}>   
-        <Header name={this.state.name}/>
-        <Form />
-        <Grid />
+        <Header name={this.props.name}/>
+        <Form 
+          addNewNote={this.props.addNewNote}
+        />
+        <Grid 
+          notes={this.props.notes} 
+          removeNote={this.props.removeNote}
+        />
 
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchProps = (dispatch, ownProps) => {
+  return {
+    getInitialNotes: () => {
+      dispatch(getInitialNotes())
+    },
+    addNewNote: (note) => {
+      dispatch(addNewNote(note))
+    },
+    removeNote: (id) => {
+      dispatch(removeNote(id))
+    }
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    notes: state.notes,
+    name: state.name
+  }
+}
+
+export default connect(mapDispatchProps, mapStateToProps)(App);

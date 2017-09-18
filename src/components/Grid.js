@@ -3,13 +3,16 @@ import Single from './Single';
 
 class Grid extends React.Component {
 
-	deleteNote(id){
+	removeNote(id){
 		this.props.deleteNote(id);
 	}
 
 	renderItems(){
 		return this.props.notes.map(item =>
-			<Single key={item.id} note ={item.details} title={item.title} deleteNote={this.deleteNote.bind(this)}/>
+			<Single 
+				key={item.id} 
+				note ={item} 
+				removeNote={this.removeNote.bind(this)}/>
         );
 	}
 
